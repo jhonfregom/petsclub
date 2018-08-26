@@ -1,0 +1,7 @@
+{
+  "name": "PetsClubBeta",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
