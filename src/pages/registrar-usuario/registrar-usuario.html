@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Registrar Usuario
+      </ion-title>
+    </ion-navbar>
+  </ion-header> 
+  
+<ion-content padding>
+  <ion-list>
+      <ion-item>
+          <ion-label>Tipo de usuario</ion-label>
+          <ion-select [(ngModel)]="tipousuario" interface="popover">
+            <ion-option value="Animalista">Animalista</ion-option>
+            <ion-option value="Empresario">Empresario</ion-option>
+            <ion-option value="Fundacion">Fundación</ion-option>
+      </ion-select>
+        </ion-item>
+  <ion-item>
+        <ion-input type="user" placeholder="Usuario"></ion-input>
+      </ion-item>
+    <ion-item>
+        <ion-input type="id" placeholder="Nit o CC."></ion-input>
+      </ion-item>
+  <ion-item>
+        <ion-input type="Mail" placeholder="Correo Electrónico"></ion-input>
+      </ion-item>
+     <ion-item>
+        <ion-input type="Password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+    <ion-item>
+        <ion-input type="CPassword" placeholder="Confirmar Contraseña"></ion-input>
+      </ion-item>
+    </ion-list>
+
+  <button ion-button block light (click)="registrar()" >Registrar</button>
+
+</ion-content>
