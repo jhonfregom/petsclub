@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  registrar_usuario(){    
+    this.navCtrl.push('RegistrarUsuarioPage');
+  }
+
 }
