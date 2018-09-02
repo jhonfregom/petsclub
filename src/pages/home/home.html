@@ -1,17 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      PetsClub
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <ion-title>
+        INICIAR SESIÓN
+      </ion-title>
+      </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list>
+  
+      <ion-item>
+        <ion-input type="text" placeholder="Usuario"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input type="password" placeholder="Contraseña"></ion-input>
+      </ion-item>
+  
+      
+    
+    </ion-list>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
 
-  <button ion-button color="light" (click)="registrar_usuario()" >Registrar</button>
+    <div padding>
+        <button ion-button color="primary" block>Iniciar sesión</button>
+      </div>
 
-</ion-content>
+      <p><a> ¿Olvidó su contraseña?</a> 
+
+      <button ion-button color="light" (click)="registrar_usuario()" >Registrar</button>
+        
+      <!--<ion-item (click)="registrar_usuario()">-->   
+  </ion-content>
+

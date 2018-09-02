@@ -9,8 +9,12 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
 
-    }
-    registrar_usuario(){
-      this.navCtrl.push('RegistrarUsuarioPage');
-    }
+
+  }
+
+  registrar_usuario(){    
+    this.navCtrl.push('RegistrarUsuarioPage');
+  }
+
+
 }
