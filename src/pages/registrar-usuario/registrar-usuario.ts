@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+/**
+ * Generated class for the RegistrarUsuarioPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @IonicPage()
 @Component({
   selector: 'page-registrar-usuario',
@@ -9,37 +16,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class RegistrarUsuarioPage {
   testCheckboxOpen: boolean;
   testCheckboxResult;
-  mycontrolGroup: FormGroup;
-  datosUsuario:any[] = [];
+constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {}
 
-constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-private fb: FormBuilder) {
-    this.mycontrolGroup = this.fb.group({
-    name: [this.datosUsuario['name'],[Validators.required]],
-    id:  [this.datosUsuario['id'], [Validators.required, Validators.minLength(5),Validators.maxLength(12)]],
-    email: [this.datosUsuario['email'], [Validators.required, Validators.email]],
-    password: [this.datosUsuario['password'], [Validators.required]],
-    cpassword: [this.datosUsuario['cpassword'], [Validators.required]],  
-  })
-  ;
-}
-
-saveData(){
-  console.log(this.datosUsuario)
-  let alerta = this.alertCtrl.create({
-    title:"Datos enviados!",
-    subTitle:"Información",
-    message:"Los registros fueron enviados correctamente",
-    buttons:['Ok']
-  });
-  alerta.present()
-  this.mycontrolGroup.reset()
-  this.datosUsuario =[];
- }
-
-
-
-/*
 doCheckbox() {
   let alert = this.alertCtrl.create();
   alert.setTitle('Términos y condiciones');
@@ -62,7 +40,7 @@ doCheckbox() {
     });
     alert.present();
   }
-  */
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrarUsuarioPage');
   }}
