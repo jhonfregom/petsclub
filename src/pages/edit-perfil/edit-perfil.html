@@ -1,0 +1,32 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Crear Perfil</ion-title>
+    </ion-navbar>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-item>
+      <ion-label>Tipo de usuario</ion-label>
+      <ion-select [(ngModel)]="tipousuario" interface="popover">
+        <ion-option value="Animalista">Animalista</ion-option>
+        <ion-option value="Empresario">Empresario</ion-option>
+        <ion-option value="Fundacion">Fundación</ion-option>
+      </ion-select>
+    </ion-item>
+        <ion-item>
+            <ion-input  type="number"[(ngModel)]="profile.id_user" placeholder="Cedula o Nit" ></ion-input>
+          </ion-item>
+
+      <ion-item>
+        <ion-icon name="person" item-left></ion-icon>
+        <ion-input  type="text"[(ngModel)]="profile.username" placeholder="Nombre de Usuario" ></ion-input>
+      </ion-item>
+
+    <button ion-button clear block (click)= "createProfile()">Crear Perfil</button>
+      <script src="./edit-perfil.html"></script>
+    </ion-content>

@@ -1,72 +1,28 @@
 <ion-header>
+
   <ion-navbar>
-    <ion-title>
-      Registro Usuario
-    </ion-title>
+    <ion-title>Registro</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  <div>
-    <h1>Registrar Usuario</h1>
-  </div>
-  <div>
-    <div>
-        <ion-item>
-            <ion-label>Tipo de usuario</ion-label>
-            <ion-select [(ngModel)]="tipousuario" interface="popover">
-              <ion-option value="Animalista">Animalista</ion-option>
-              <ion-option value="Empresario">Empresario</ion-option>
-              <ion-option value="Fundacion">Fundación</ion-option>
-            </ion-select>
-          </ion-item>
-    </div>
-    <form [formGroup]="mycontrolGroup" (ngSubmit)="saveData()" novalidate>
-      <ion-list>
 
-        <ion-item>
-          <ion-icon name="person" item-left></ion-icon>
-          <ion-label stacked>name:</ion-label>
-          <ion-input formControlName="name" type="text" placeholder="Name" name="name" [(ngModel)]="datosUsuario.name"></ion-input>
-       </ion-item>
-        <ion-item *ngIf="mycontrolGroup.get('name').hasError('required')" style="white-space: normal; color:red">El nombre
-          es requerido.
-        </ion-item> <ion-item>
-          <ion-icon name="pin" item-left></ion-icon>
-          <ion-label stacked>CC o Nit:</ion-label>
-          <ion-input formControlName="id" type="number" placeholder="Id" name="id" [(ngModel)]="datosUsuario.id"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="mycontrolGroup.get('id').hasError('required')" style="white-space: normal; color:red">La ID es requerida.
-            <p *ngIf="mycontrolGroup.get('id').hasError('minlength')" style="white-space: normal; color:red">El minimi de caracteres permitidos es 5.</p>
-            <p *ngIf="mycontrolGroup.get('id').hasError('maxlength')" style="white-space: normal; color:red">El maximo de caracteres permitidos es 12.</p>
-        </ion-item>       
-         <ion-item>
-          <ion-icon name="at" item-left></ion-icon>
-          <ion-label stacked>E-Mail:</ion-label>
-          <ion-input formControlName="email" type="email" placeholder="Email" name="email" [(ngModel)]="datosUsuario.email"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="mycontrolGroup.get('email').hasError('required')" style="white-space: normal; color:red">El correo
-          es requerido.
-          <p *ngIf="mycontrolGroup.get('email').hasError('email')" style="white-space: normal; color:red">El correo electronico
-            indicado no es valido.</p>
-        </ion-item>
-        <ion-item>
-          <ion-icon name="key" item-left></ion-icon>
-          <ion-label stacked>Password:</ion-label>
-          <ion-input formControlName="password" type="password" placeholder="Password" name="password" [(ngModel)]="datosUsuario.password"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="mycontrolGroup.get('password').hasError('required')" style="white-space: normal; color:red">El pass
-          es requerido.
-        </ion-item>
-        <ion-item>
-          <ion-icon name="key" item-left></ion-icon>
-          <ion-label stacked>Confirmar Password:</ion-label>
-          <ion-input formControlName="cpassword" type="password" placeholder="Cpassword" name="cpassword" [(ngModel)]="datosUsuario.cpassword"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="mycontrolGroup.get('cpassword').hasError('required')" style="white-space: normal; color:red">El
-          pass es requerido.
-        </ion-item><ion-item>
-          <button ion-button block type="submit" [disabled]="!mycontrolGroup.valid">Enviar</button>
-        </ion-item></ion-list>
-    </form>
-  </div></ion-content>
+<ion-content padding>
+  <form (ngSubmit)= "register()" [formGroup]="myForm">
+  <ion-list>
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input formControlName="email" type="email"[(ngModel)]="user.email" placeholder="Correo Electronico" ></ion-input>
+    </ion-item>
+   
+    <ion-item>
+        <ion-icon name="key" item-left></ion-icon>
+      <ion-input formControlName="password" type="password" [(ngModel)]="user.password" placeholder="Contraseña"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block type="submit" [disabled]="!myForm.valid">
+      Registrar
+    </button>
+</form>
+  </ion-content>
