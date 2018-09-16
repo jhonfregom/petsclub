@@ -6,6 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ReactiveFormsModule} from '@angular/forms';
+import { AngularFireModule} from 'angularfire2'; 
+import { FIREBASE_CONFIG} from "./app.firebase.config";
+import { AngularFireAuthModule} from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database"
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +19,11 @@ import { ReactiveFormsModule} from '@angular/forms';
   imports: [
     ReactiveFormsModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    //Inicialización de AngularFire con credenciales para el tablero.
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +33,8 @@ import { ReactiveFormsModule} from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFireAuthModule,
+   ]
 })
 export class AppModule {}
