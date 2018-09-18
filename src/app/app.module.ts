@@ -10,7 +10,7 @@ import { AngularFireModule} from 'angularfire2';
 import { FIREBASE_CONFIG} from "./app.firebase.config";
 import { AngularFireAuthModule} from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import { SessionProvider } from '../providers/session/session';
+
 
 
 @NgModule({
@@ -37,7 +37,6 @@ import { SessionProvider } from '../providers/session/session';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuthModule,
-    SessionProvider,
-   ]
+    ]
 })
 export class AppModule {}

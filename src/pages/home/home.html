@@ -8,19 +8,21 @@
   
   
   <ion-content padding>
-    <ion-list>
-  
-      <ion-item>
-        <ion-input type="text" placeholder="Usuario"></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input type="password" placeholder="Contraseña"></ion-input>
-      </ion-item>
-  
-      
-    
-    </ion-list>
+    <form [formGroup]="myForm" (ngSubmit)="loginUser()">
+      <ion-list>
+        <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key" item-left></ion-icon>
+          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button block type="submit" [disabled]="!myForm.valid">Ingresar</button>
+      </div>
+    </form>
 
 
     <div padding>

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
+import { PerfilAnimalistaPage } from '../pages/perfil-animalista/perfil-animalista';
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,8 +23,9 @@ export class MyApp {
     });
   
     this.pages = [
-      { title: 'Perfil', component: HomePage },
-      { title: 'Notificaciones', component: NotificacionesPage }
+      { title: 'Perfil', component: PerfilAnimalistaPage },
+      { title: 'Notificaciones', component: NotificacionesPage },
+      { title: 'Cerrar Sesión', component: HomePage}
     ];
   }
 }
