@@ -24,7 +24,22 @@
 
 
     <div padding>
-        <button ion-button color="primary" block (click)="iniciar_sesion()">Iniciar sesión</button>
+        <button ion-button (click)="iniciarSesionFacebook('facebook')" *ngIf="!facebook.iniciosesion"> <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;Iniciar sesión con Facebook</button>
+        <!--<button ion-button (click)="iniciarSesionFacebook()" *ngIf="!facebook.iniciosesion"> Iniciar sesión con Facebook</button>-->
+
+        <ion-card *ngIf="facebook.iniciosesion">
+          <img src="{{ facebook.imagen }}"/>
+          <ion-card-content>
+            <ion-card-title>
+              {{ facebook.name }}
+              </ion-card-title>
+            <p style="text-align: center">
+            {{ facebook.correo }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+
+        <button ion-button (click)="cerrarSesionFacebook()" *ngIf="!facebook.iniciosesion">Cerrar sesión </button>
       </div>
 
       <p><a> ¿Olvidó su contraseña?</a> 
