@@ -11,20 +11,20 @@
   <ion-content padding>
 
       <ion-content padding>
-          <form [formGroup]="myForm" (ngSubmit)="addProfile()">
-            <ion-list>
+          
+            
               <ion-item>
                 <ion-icon name="person" item-left></ion-icon>
-                <ion-input formControlName="profile/id_user" type="text" placeholder="CC"></ion-input>
+                <ion-input [(ngModel)]="profile.id_user" type="text" placeholder="id"></ion-input>
               </ion-item>
               <ion-item>
                 <ion-icon name="key" item-left></ion-icon>
-                <ion-input formControlName="username" type="text" placeholder="Nombre de usuario"></ion-input>
+                <ion-input [(ngModel)]="profile.username" type="text" placeholder="Nombre de usuario"></ion-input>
               </ion-item>
-            </ion-list>
+            
             <div padding>
-              <button ion-button block type="submit" [disabled]="!myForm.valid">Ingresar</button>
+              <button ion-button clear block (click)= "createProfile()">Crear Perfil</button>
             </div>
-          </form>
+     
   
     </ion-content>
