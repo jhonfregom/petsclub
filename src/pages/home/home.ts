@@ -75,6 +75,7 @@ export class HomePage {
       this.facebook.nombre = res.user.displayName;
       this.facebook.imagen = res.user.photoURL;
       this.facebook.correo = res.user.email;
+      this.navCtrl.setRoot('EditPerfilPage');
       console.log(res);
     })
   }

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, IonicPage } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Profile} from '../../models/profile';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
+import { Profile} from '../../models/profile';
 
 @IonicPage()
 @Component({
@@ -12,21 +11,12 @@ import { AngularFireDatabase} from 'angularfire2/database';
 
 })
 export class EditPerfilPage {
-  myForm: FormGroup;
-  profile ={} as Profile;
-  constructor( private afAuth: AngularFireAuth, 
-    private afDatabase: AngularFireDatabase,
-    public formBuilder: FormBuilder, 
-    public navCtrl: NavController,
-    public alertCtrl: AlertController,
-    public navParams: NavParams) {
 
-      this.myForm = this.formBuilder.group({
-        id: ['', Validators.required],
-        name: ['', Validators.required]
-      });
+  profile ={} as Profile;
+  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase,
+    public navCtrl: NavController, public navParams: NavParams) {
     }
-    addProfile(){
+    createProfile(){
       this.afAuth.authState.take(1).subscribe(auth =>{
         this.afDatabase.object(`perfil/${auth.uid}`).set(this.profile)
         .then(() => this.navCtrl.setRoot('PerfilAnimalistaPage'))
