@@ -26,10 +26,23 @@
 
 
     <div padding>
-        <button ion-button (click)="iniciarSesionFacebook('facebook')" *ngIf="!facebook.iniciosesion"> <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;Iniciar sesión con Facebook</button>
+
+        <p> Iniciar sesión con </p>
+      <!--Botón que permite la autenticación con facebook-->
+      <button ion-button color="" (click)="iniciarSesionFacebook()" round> 
+      <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;  Facebook</button>
+      <!--Botón que permite la autenticación con google-->
+      <button ion-button color="danger" (click)="iniciarSesionFacebook()" round> 
+      <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp; Google</button>  
+      
+     
+     
+     
+      <!-- <button ion-button (click)="iniciarSesionFacebook('facebook')" *ngIf="!facebook.iniciosesion"> <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;Iniciar sesión con Facebook</button>-->
+        
         <!--<button ion-button (click)="iniciarSesionFacebook()" *ngIf="!facebook.iniciosesion"> Iniciar sesión con Facebook</button>-->
 
-        <ion-card *ngIf="facebook.iniciosesion">
+        <!--<ion-card *ngIf="facebook.iniciosesion">
           <img src="{{ facebook.imagen }}"/>
           <ion-card-content>
             <ion-card-title>
@@ -39,15 +52,16 @@
             {{ facebook.correo }}
             </p>
           </ion-card-content>
-        </ion-card>
+        </ion-card>-->
 
-        <button ion-button (click)="cerrarSesionFacebook()" *ngIf="!facebook.iniciosesion">Cerrar sesión </button>
-      </div>
+        
 
       <p><a> ¿Olvidó su contraseña?</a> 
 
-      <button ion-button color="light" (click)="registrar_usuario()" >Registrar</button>
       
+
+      <button ion-button (click)="cerrarSesionFacebook()" *ngIf="!facebook.iniciosesion">Cerrar sesión </button>
+      </div>
         
       <!--<ion-item (click)="registrar_usuario()">-->   
   </ion-content>
