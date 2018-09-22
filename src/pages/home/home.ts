@@ -81,4 +81,5 @@ export class HomePage {
   cerrarSesionFacebook(){
     this.fire.auth.signOut();
     this.facebook.iniciosesion = false;
-  }}
+  }
+}
