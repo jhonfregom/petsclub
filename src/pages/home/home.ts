@@ -74,7 +74,7 @@ export class HomePage {
       /*this.facebook.iniciosesion = true;
       this.facebook.nombre = res.user.displayName;
       this.facebook.imagen = res.user.photoURL;
-      this.facebook.correo = res.user.email;*/
+      */
       this.navCtrl.setRoot('PerfilAnimalistaPage');
       console.log(res);
     })
