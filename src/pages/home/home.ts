@@ -73,8 +73,7 @@ export class HomePage {
     .then( res => {
       /*this.facebook.iniciosesion = true;
       this.facebook.nombre = res.user.displayName;
-      this.facebook.imagen = res.user.photoURL;
-      */
+      this.facebook.imagen = res.user.photoURL;*/
       this.navCtrl.setRoot('PerfilAnimalistaPage');
       console.log(res);
     })
