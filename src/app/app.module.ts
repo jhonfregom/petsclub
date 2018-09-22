@@ -10,7 +10,7 @@ import { AngularFireModule} from 'angularfire2';
 import { FIREBASE_CONFIG} from "./app.firebase.config";
 import { AngularFireAuthModule} from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import { SessionProvider } from '../providers/session/session';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { SessionProvider } from '../providers/session/session';
     //Inicialización de AngularFire con credenciales para el tablero.
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +38,6 @@ import { SessionProvider } from '../providers/session/session';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuthModule,
-    SessionProvider,
-   ]
+    ]
 })
 export class AppModule {}
