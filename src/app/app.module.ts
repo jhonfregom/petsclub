@@ -9,7 +9,9 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule} from 'angularfire2'; 
 import { FIREBASE_CONFIG} from "./app.firebase.config";
 import { AngularFireAuthModule} from "angularfire2/auth";
-import { AngularFireDatabaseModule } from "angularfire2/database"
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database"
     //Inicialización de AngularFire con credenciales para el tablero.
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,6 +38,6 @@ import { AngularFireDatabaseModule } from "angularfire2/database"
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuthModule,
-   ]
+    ]
 })
 export class AppModule {}

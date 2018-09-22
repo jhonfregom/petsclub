@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController, IonicPage } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Profile} from '../../models/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
-import { Profile} from '../../models/profile';
-
-
 
 @IonicPage()
 @Component({
@@ -13,20 +12,24 @@ import { Profile} from '../../models/profile';
 
 })
 export class EditPerfilPage {
-
-  
-profile ={} as Profile;
-
-  constructor(private afAuth: AngularFireAuth, 
+  myForm: FormGroup;
+  profile ={} as Profile;
+  constructor( private afAuth: AngularFireAuth, 
     private afDatabase: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams) {
-  }
+    public formBuilder: FormBuilder, 
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams) {
 
-  createProfile(){
-    this.afAuth.authState.take(1).subscribe(auth =>{
-      this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-      .then(() => this.navCtrl.setRoot('PerfilAnimalistaPage'))
-    })
-  }
-
+      this.myForm = this.formBuilder.group({
+        id: ['', Validators.required],
+        name: ['', Validators.required]
+      });
+    }
+    addProfile(){
+      this.afAuth.authState.take(1).subscribe(auth =>{
+        this.afDatabase.object(`perfil/${auth.uid}`).set(this.profile)
+        .then(() => this.navCtrl.setRoot('PerfilAnimalistaPage'))
+      })
+    }
 }

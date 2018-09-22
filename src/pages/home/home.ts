@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController,LoadingController, Loading, AlertController} from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'page-home',
@@ -17,18 +19,55 @@ export class HomePage {
     correo: ''
   }
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController) {
+  myForm: FormGroup;
+  user: Observable<firebase.User>;
+  public loading:Loading;
 
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController,
+    public formBuilder: FormBuilder,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
+    ) {
+      this.myForm = this.formBuilder.group({
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+      this.user = fire.authState;
 
   }
+  loginUser(){
 
+    console.log("Email:" + this.myForm.value.email);
+    console.log("Password:" + this.myForm.value.password);
+   
+
+    this.fire.auth.signInWithEmailAndPassword(this.myForm.value.email, this.myForm.value.password).then(() => {
+      console.log("User logging");
+      this.navCtrl.setRoot('PerfilAnimalistaPage');
+    }, (err) => {
+      this.loading.dismiss().then( () => {
+        let alert = this.alertCtrl.create({
+          message: err.message,
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
+        });
+        alert.present();
+      });
+    });
+
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    this.loading.present();
+  }
   registrar_usuario(){    
     this.navCtrl.push('RegistrarUsuarioPage');
   }
-  iniciar_sesion(){    
-    this.navCtrl.push('PerfilAnimalistaPage');
-  }
-
+  
   iniciarSesionFacebook(){
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
     .then( res => {
@@ -43,6 +82,4 @@ export class HomePage {
   cerrarSesionFacebook(){
     this.fire.auth.signOut();
     this.facebook.iniciosesion = false;
-  }
-
-}
+  }}
