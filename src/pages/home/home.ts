@@ -73,7 +73,8 @@ export class HomePage {
     .then( res => {
       /*this.facebook.iniciosesion = true;
       this.facebook.nombre = res.user.displayName;
-      this.facebook.imagen = res.user.photoURL;
+      this.facebook.imagen = res.user.photoURL;*/
+      this.navCtrl.setRoot('PerfilAnimalistaPage');
       console.log(res);
     })
   }
@@ -81,4 +82,5 @@ export class HomePage {
   cerrarSesionFacebook(){
     this.fire.auth.signOut();
     this.facebook.iniciosesion = false;
-  }}
+  }
+}
