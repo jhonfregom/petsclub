@@ -71,10 +71,11 @@ export class HomePage {
   iniciarSesionFacebook(){
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
     .then( res => {
-      this.facebook.iniciosesion = true;
+      /*this.facebook.iniciosesion = true;
       this.facebook.nombre = res.user.displayName;
       this.facebook.imagen = res.user.photoURL;
-      this.facebook.correo = res.user.email;
+      this.facebook.correo = res.user.email;*/
+      this.navCtrl.setRoot('PerfilAnimalistaPage');
       console.log(res);
     })
   }
