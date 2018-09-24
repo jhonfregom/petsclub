@@ -20,22 +20,33 @@
         </ion-item>
       </ion-list>
       <div padding>
-        <button ion-button block type="submit" [disabled]="!myForm.valid">Ingresar</button>
+        <button ion-button block type="submit" [disabled]="!myForm.valid" round>Ingresar</button>
       </div>
     </form>
 
 
-    <div padding>
+    <div padding class="center">
 
-        <p> Iniciar sesión con </p>
+        <ion-grid style="height: 100%">
+            <ion-row justify-content-center align-items-center style="height: 100%">
+                Iniciar sesión con
+            </ion-row>
+          </ion-grid>
       <!--Botón que permite la autenticación con facebook-->
       <button ion-button color="" (click)="iniciarSesionFacebook()" round> 
-      <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;  Facebook</button>
+        <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;  Facebook</button>
       <!--Botón que permite la autenticación con google-->
-      <button ion-button color="danger" (click)="iniciarSesionFacebook()" round> 
-      <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp; Google</button>  
+      <button ion-button color="danger" (click)="iniciarSesionGoogle()" round> 
+        <ion-icon ios="logo-googleplus" md="logo-googleplus"></ion-icon>&nbsp; Google</button>  
+      <!--Botón que permite direccionar al formulario de registro-->
+      <ion-grid style="height: 100%">
+          <ion-row justify-content-center align-items-center style="height: 100%">
+              o
+          </ion-row>
+      </ion-grid>
       
-     
+      
+      <button ion-button color="calm" (click)="registrar_usuario()" round>Registrar</button>
      
      
       <!-- <button ion-button (click)="iniciarSesionFacebook('facebook')" *ngIf="!facebook.iniciosesion"> <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>&nbsp;Iniciar sesión con Facebook</button>-->
@@ -53,16 +64,6 @@
             </p>
           </ion-card-content>
         </ion-card>-->
-
-        
-
-      <p><a> ¿Olvidó su contraseña?</a> 
-
-      
-
-      <button ion-button (click)="cerrarSesionFacebook()" *ngIf="!facebook.iniciosesion">Cerrar sesión </button>
-      </div>
-        
-      <!--<ion-item (click)="registrar_usuario()">-->   
+      </div>   
   </ion-content>
 
