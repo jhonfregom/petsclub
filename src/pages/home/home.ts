@@ -79,8 +79,12 @@ export class HomePage {
     })
   }
 
-  cerrarSesionFacebook(){
-    this.fire.auth.signOut();
-    this.facebook.iniciosesion = false;
+  iniciarSesionGoogle(){
+    this.fire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then( res => {
+      this.navCtrl.setRoot('PerfilAnimalistaPage');
+      console.log(res);
+    })
   }
 }
+
