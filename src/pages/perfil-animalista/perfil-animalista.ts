@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AngularFireAuth} from 'angularfire2/auth'
+import { AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
+import { Profile } from '../../models/profile';
 
 
 /**
@@ -17,19 +20,36 @@ import { HomePage } from '../home/home';
 })
 export class PerfilAnimalistaPage {
 
+profileData:  AngularFireObject<Profile>
 
 
-  constructor( public navCtrl: NavController, 
+
+  constructor( private afAuth: AngularFireAuth, 
+    private afDatabase: AngularFireDatabase,
+    private toast: ToastController,
+    public navCtrl: NavController, 
     public navParams: NavParams,
-    public app: App) {
+   ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilAnimalistaPage');
-  }
-
-  
-  logout(){
+    this.afAuth.authState.subscribe(data => {
+      if (data && data.email && data.uid){
+      this.toast.create({
+        message:`Bienvenido a PetsClub, /${data.email}`,
+        duration: 3000
+      }).present();
+        this.afDatabase.object(`perfil/${data.uid}`)
+    }
+    else{
+      this.toast.create({
+        message:'Error de usuario o contraseña}',
+        duration: 3000
+      }).present();
+    }
+  })
+}
+ logout(){
 
     this.navCtrl.push(HomePage);
 }

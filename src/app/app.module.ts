@@ -9,7 +9,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { AngularFireModule} from 'angularfire2'; 
 import { FIREBASE_CONFIG} from "./app.firebase.config";
 import { AngularFireAuthModule} from "angularfire2/auth";
-import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireDatabaseModule} from "angularfire2/database";
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
@@ -26,7 +26,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

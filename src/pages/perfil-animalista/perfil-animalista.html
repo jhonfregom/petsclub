@@ -1,103 +1,126 @@
 <ion-header>
   <ion-navbar no-border-bottom>
     <ion-title>
-      Segments
+      PetsClub
     </ion-title>
   </ion-navbar>
 
   <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="puppies">
-        Puppies
+    <ion-segment [(ngModel)]="principal">
+      <ion-segment-button value="profile">
+        <ion-icon name="person" item-left></ion-icon>  <!--Perfil-->
       </ion-segment-button>
-      <ion-segment-button value="kittens">
-        Kittens
+      <ion-segment-button value="novelty">
+        <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon> <!--Gestionar Novedad-->
       </ion-segment-button>
-      <ion-segment-button value="ducklings">
-        Ducklings
+      <ion-segment-button value="view">
+        <ion-icon ios="ios-eye" md="md-eye"></ion-icon>    <!--Visualización de Novedades-->
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div [ngSwitch]="pet">
-    <ion-list *ngSwitchCase="'puppies'">
+  <div [ngSwitch]="principal">
+    <ion-list *ngSwitchCase="'profile'">
+      <ion-card>
+        
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/info.png">
+          </ion-avatar>
+          <h2>Username: {{(profileData | async)?.username}}</h2>
+          <p><!--{{myInfo.lastName}}--></p>
+        </ion-item>
+      
+        <img src="assets/img/wallpaper.jpg">
+      
+        <ion-card-content>
+          <!--
+<p>    {{myInfo.country}} ,  {{myInfo.city}}  ,  {{myInfo.phone}}   ,   {{myInfo.salary}}   ,   {{myInfo.email}}   </p>
+-->     
+</ion-card-content>
+      
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>Like</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="md-heart"></ion-icon>
+              <div>Donate</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              11h ago
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      
+      </ion-card>
+     
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-puppy-1.jpg">
+       <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
-        <h2>Ruby</h2>
+        <h2><p></p></h2>
       </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-puppy-2.jpg">
-        </ion-thumbnail>
-        <h2>Oscar</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-puppy-4.jpg">
-        </ion-thumbnail>
-        <h2>Zoey</h2>
-      </ion-item>
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-puppy-3.jpg">
-        </ion-thumbnail>
-        <h2>Otto</h2>
-      </ion-item>
+
     </ion-list>
 
-    <ion-list *ngSwitchCase="'kittens'">
+    <ion-list *ngSwitchCase="'novelty'">
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-1.jpg">
+        <!--  <img src="assets/img/thumbnail-kitten-1.jpg"> -->
         </ion-thumbnail>
         <h2>Luna</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-3.jpg">
+        <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Milo</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-4.jpg">
+       <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Bandit</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-kitten-2.jpg">
+      <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Nala</h2>
       </ion-item>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'ducklings'">
+    <ion-list *ngSwitchCase="'view'">
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-1.jpg">
+    <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Daffy</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-2.jpg">
+    <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Huey</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-3.jpg">
+      <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Dewey</h2>
       </ion-item>
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/thumbnail-duckling-4.jpg">
+      <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
         </ion-thumbnail>
         <h2>Louie</h2>
       </ion-item>
