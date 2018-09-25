@@ -24,16 +24,12 @@
   <div [ngSwitch]="principal">
     <ion-list *ngSwitchCase="'profile'">
       <ion-card>
-        
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/info.png">
-          </ion-avatar>
-          <h2>Username: {{(profileData | async)?.username}}</h2>
-          <p><!--{{myInfo.lastName}}--></p>
-        </ion-item>
+        <p>Username:</p>
+        <ion-item *ngFor="let menu of profile | async">
+           {{ profile.username }}
+  </ion-item>
       
-        <img src="assets/img/wallpaper.jpg">
+    <!--     <img src="assets/img/wallpaper.jpg"> -->
       
         <ion-card-content>
           <!--
