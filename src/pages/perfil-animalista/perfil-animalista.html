@@ -25,8 +25,8 @@
     <ion-list *ngSwitchCase="'profile'">
       <ion-card>
         <p>Username:</p>
-        <ion-item *ngFor="let menu of profile | async">
-           {{ profile.username }}
+        <ion-item *ngFor="let menu of profileData | async">
+           {{ menu.username }}
   </ion-item>
       
     <!--     <img src="assets/img/wallpaper.jpg"> -->
