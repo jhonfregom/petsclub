@@ -29,11 +29,12 @@ profileData:  Observable<any[]>;
     public navCtrl: NavController, 
     public navParams: NavParams,
    ) {
+    this.profileData = this.afDatabase.list('perfil').snapshotChanges();
   }
 
   ionViewDidLoad() {
 
-    this.profileData = this.afDatabase.list('profile').snapshotChanges();
+    
 
 /*    this.afAuth.authState.subscribe(data => {
       if (data && data.email && data.uid){
