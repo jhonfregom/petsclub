@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AngularFireAuth} from 'angularfire2/auth'
-import { AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
-import { Profile } from '../../models/profile';
-
+import { AngularFireDatabase} from 'angularfire2/database';
+//import { Profile } from '../../models/profile';
+import { Observable} from 'rxjs/Observable';
 
 /**
  * Generated class for the PerfilAnimalistaPage page.
@@ -20,20 +20,22 @@ import { Profile } from '../../models/profile';
 })
 export class PerfilAnimalistaPage {
 
-profileData:  AngularFireObject<Profile>
+profileData:  Observable<any[]>;
 
 
 
   constructor( private afAuth: AngularFireAuth, 
     private afDatabase: AngularFireDatabase,
-    private toast: ToastController,
     public navCtrl: NavController, 
     public navParams: NavParams,
    ) {
   }
 
   ionViewDidLoad() {
-    this.afAuth.authState.subscribe(data => {
+
+    this.profileData = this.afDatabase.list('profile').snapshotChanges();
+
+/*    this.afAuth.authState.subscribe(data => {
       if (data && data.email && data.uid){
       this.toast.create({
         message:`Bienvenido a PetsClub, /${data.email}`,
@@ -47,11 +49,12 @@ profileData:  AngularFireObject<Profile>
         duration: 3000
       }).present();
     }
-  })
+  })*/
 }
- logout(){
 
-    this.navCtrl.push(HomePage);
+ logout(){
+this.afAuth.auth.signOut();
+    this.navCtrl.setRoot(HomePage);
 }
 }
 
