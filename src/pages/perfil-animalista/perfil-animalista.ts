@@ -8,6 +8,8 @@ import { Observable} from 'rxjs/Observable';
 
 
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-perfil-animalista',
@@ -15,8 +17,8 @@ import { Observable} from 'rxjs/Observable';
 })
 export class PerfilAnimalistaPage {
 
-profileData:  Observable<any[]>;
-
+profileData:  Observable<any>;
+correo : String;
 
 
   constructor( private afAuth: AngularFireAuth, 
@@ -34,17 +36,18 @@ profileData:  Observable<any[]>;
         message:`Bienvenido a PetsClub, /${data.email}`,
         duration: 3000
       }).present();
-      this.profileData = this.afDatabase.list(`perfil/${data.uid}`).snapshotChanges()
-      .map(changes => {
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-      })
-    }
+     this.profileData  = this.afDatabase.list(`perfil${name}`).snapshotChanges()
+     .map(changes => {
+       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+     })
+   }
     else{
       this.toast.create({
         message:'Error de usuario o contraseña}',
         duration: 3000
       }).present();
     }
+    
   })
 }
 

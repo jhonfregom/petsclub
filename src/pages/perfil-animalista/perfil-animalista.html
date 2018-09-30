@@ -26,7 +26,7 @@
       <ion-card>
         <p>Username:</p>
         <ion-item *ngFor="let data of profileData | async">
-          <p>   {{ data.username }}</p>
+          <p>   {{ data.afUser }}</p>
   </ion-item>
 
       <p>Username: {{(profileData | async)?.username}}</p>
