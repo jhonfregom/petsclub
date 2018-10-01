@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { AngularFireAuth} from 'angularfire2/auth'
+import { AngularFireAuth} from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 //import { Profile } from '../../models/profile';
 import { Observable} from 'rxjs/Observable';
 
-/**
- * Generated class for the PerfilAnimalistaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
+
 
 @IonicPage()
 @Component({
@@ -20,37 +17,38 @@ import { Observable} from 'rxjs/Observable';
 })
 export class PerfilAnimalistaPage {
 
-profileData:  Observable<any[]>;
-
+profileData:  Observable<any>;
+correo : String;
 
 
   constructor( private afAuth: AngularFireAuth, 
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private toast: ToastController,
    ) {
-    this.profileData = this.afDatabase.list('perfil').snapshotChanges();
-  }
+}
 
   ionViewDidLoad() {
-
-    
-
-/*    this.afAuth.authState.subscribe(data => {
+    this.afAuth.authState.subscribe(data => {
       if (data && data.email && data.uid){
       this.toast.create({
         message:`Bienvenido a PetsClub, /${data.email}`,
         duration: 3000
       }).present();
-        this.afDatabase.object(`perfil/${data.uid}`)
-    }
+     this.profileData  = this.afDatabase.list(`perfil${name}`).snapshotChanges()
+     .map(changes => {
+       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+     })
+   }
     else{
       this.toast.create({
         message:'Error de usuario o contraseña}',
         duration: 3000
       }).present();
     }
-  })*/
+    
+  })
 }
 
  logout(){
@@ -58,5 +56,6 @@ this.afAuth.auth.signOut();
     this.navCtrl.setRoot(HomePage);
 }
 }
+
 
 
