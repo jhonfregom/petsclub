@@ -86,5 +86,10 @@ export class HomePage {
       console.log(res);
     })
   }
+
+  barcodeScanner(){    
+    this.navCtrl.push('QrPage');
+  }
+
 }
 
