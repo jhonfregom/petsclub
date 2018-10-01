@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the QrPage page.
@@ -15,11 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class QrPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data = { };
+  option:BarcodeScannerOptions;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public barcodeScanner: BarcodeScanner) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrPage');
+  }
+
+  scanner(){
+    this.option = {      
+      prompt:"Escanear el codigo"
+    }
+    this.barcodeScanner.scan(this.option).then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.data = barcodeData;
+     }).catch(err => {
+         console.log('Error', err);
+     });
   }
 
 }
