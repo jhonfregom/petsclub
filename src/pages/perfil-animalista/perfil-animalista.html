@@ -26,44 +26,22 @@
 <ion-content>
   <div [ngSwitch]="principal">
     <ion-list *ngSwitchCase="'profile'">
-      <ion-card>
-        <p>Username: {{profileData}}</p>
-        <ion-card-content>
-          <!--
-<p>    {{myInfo.country}} ,  {{myInfo.city}}  ,  {{myInfo.phone}}   ,   {{myInfo.salary}}   ,   {{myInfo.email}}   </p>
--->
-        </ion-card-content>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="thumbs-up"></ion-icon>
-              <div>Like</div>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small>
-              <ion-icon name="md-heart"></ion-icon>
-              <div>Donate</div>
-            </button>
-          </ion-col>
-          <ion-col center text-center>
-            <ion-note>
-              11h ago
-            </ion-note>
-          </ion-col>
-        </ion-row>
+<div class="card">
+    <p class="title">Pets Club</p>
+    <img src="img.jpg" alt="John" style="width:100%">
+    <h1> {{profileData}}</h1>
+ 
+ 
+  
+  <p>Intereses</p>
 
-      </ion-card>
+  <a href="https://www.facebook.com/"><i class="fa fa-twitter"></i></a> 
 
-      <ion-item>
-        <ion-thumbnail item-start>
-          <!--  <img src="assets/img/thumbnail-kitten-3.jpg"> -->
-        </ion-thumbnail>
-        <h2>
-          <p></p>
-        </h2>
-      </ion-item>
+  <a href="https://twitter.com/"><i class="fa fa-facebook"></i></a> 
+  <p><button>Contact</button></p>
+</div>
 
     </ion-list>
 
