@@ -74,7 +74,7 @@ export class HomePage {
       /*this.facebook.iniciosesion = true;
       this.facebook.nombre = res.user.displayName;
       this.facebook.imagen = res.user.photoURL;*/
-      this.navCtrl.setRoot('PerfilAnimalistaPage');
+      this.navCtrl.setRoot('EditPerfilPage');
       console.log(res);
     })
   }
@@ -82,7 +82,7 @@ export class HomePage {
   iniciarSesionGoogle(){
     this.fire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then( res => {
-      this.navCtrl.setRoot('PerfilAnimalistaPage');
+      this.navCtrl.setRoot('EditPerfilPage');
       console.log(res);
     })
   }
